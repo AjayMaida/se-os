@@ -384,3 +384,27 @@ The following functional requirements define the core capabilities that the SE-O
 | FR-013 | The system shall adapt future recommendations based on user progress and feedback. | High |
 | FR-014 | The system shall notify users about pending tasks and upcoming milestones. | Low |
 | FR-015 | The system shall maintain a history of AI interactions for future reference. | Medium |
+
+---
+
+## Non-functional Requirements
+
+The following non-functional requirements define the quality attributes, operational expectations, and technical constraints of the SE-OS platform.
+
+| ID | Requirement | Target |
+|----|-------------|--------|
+| NFR-001 | The system shall provide an average API response time of less than 500 ms for standard operations. | < 500 ms |
+| NFR-002 | The dashboard shall load within 2 seconds under normal operating conditions. | < 2 seconds |
+| NFR-003 | The platform shall support at least 10,000 registered users during the MVP phase without significant performance degradation. | ≥ 10,000 users |
+| NFR-004 | The platform shall maintain an uptime of at least 99.5% for the MVP deployment. | ≥ 99.5% |
+| NFR-005 | All communication between clients and servers shall use HTTPS encryption. | Mandatory |
+| NFR-006 | User passwords shall never be stored in plain text and must be securely hashed. | Mandatory |
+| NFR-007 | The platform shall support OAuth 2.0 authentication providers such as Google and GitHub. | Mandatory |
+| NFR-008 | The system architecture shall be modular to support future feature expansion and service separation. | Mandatory |
+| NFR-009 | The platform shall maintain audit logs for important user actions and system events. | Mandatory |
+| NFR-010 | The application shall provide meaningful error messages without exposing sensitive system information. | Mandatory |
+| NFR-011 | The user interface shall be responsive and support desktop, tablet, and mobile browsers. | Responsive |
+| NFR-012 | The platform shall be designed following accessibility best practices to improve usability for all users. | WCAG-inspired |
+| NFR-013 | The application shall support automated testing and continuous integration workflows. | Mandatory |
+| NFR-014 | The platform shall be containerized to enable consistent deployment across environments. | Docker |
+| NFR-015 | The system shall be designed to support future AI agents and additional third-party integrations without major architectural changes. | Extensible |
