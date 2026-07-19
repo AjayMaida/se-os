@@ -120,3 +120,103 @@ The success of the MVP will be evaluated using the following key metrics:
 | Roadmap Completion Rate | Increasing over time |
 | User Satisfaction (CSAT) | ≥ 4.5 / 5 |
 | AI Recommendation Acceptance Rate | ≥ 80% |
+
+
+---
+
+## Scope
+
+The initial release of SE-OS focuses on delivering the core functionality required to help users define career goals, receive personalized learning guidance, and track progress toward those goals.
+
+### In Scope
+
+The MVP includes the following capabilities:
+
+- User authentication and profile management
+- Career goal definition and onboarding
+- AI-generated personalized learning roadmap
+- Daily task planning and progress tracking
+- AI-powered career mentor and guidance
+- Learning resource recommendations
+- Progress dashboard and analytics
+- GitHub integration for portfolio tracking
+
+### Out of Scope
+
+The following features are intentionally excluded from the MVP and may be considered for future releases:
+
+- Native mobile applications
+- Community discussion forums
+- Team collaboration features
+- Marketplace for learning content
+- Enterprise administration portal
+- Voice-based AI assistant
+- Calendar synchronization
+- Mock interview platform
+
+---
+
+## User Personas
+
+SE-OS is designed to support learners and professionals at different stages of their careers. The following personas represent the primary target audience for the MVP.
+
+### Persona 1 — College Student
+
+**Goal**
+
+Secure a software engineering role through campus placements.
+
+**Needs**
+
+- Structured DSA roadmap
+- Project recommendations
+- Resume guidance
+- Interview preparation
+- Daily study plan
+
+---
+
+### Persona 2 — Working Professional
+
+**Goal**
+
+Transition into a new technical role (e.g., AI Engineer, Backend Engineer, Cloud Engineer).
+
+**Needs**
+
+- Skill gap analysis
+- Personalized learning roadmap
+- Portfolio recommendations
+- Career planning
+- Progress tracking
+
+---
+
+### Persona 3 — Beginner
+
+**Goal**
+
+Learn programming from scratch.
+
+**Needs**
+
+- Beginner-friendly learning path
+- Small hands-on projects
+- Daily practice tasks
+- Curated learning resources
+
+---
+
+### Persona 4 — Career Switcher
+
+**Goal**
+
+Transition from a non-software background into software engineering.
+
+**Needs**
+
+- Structured roadmap
+- Skill prioritization
+- Realistic timeline
+- Portfolio-building guidance
+- Motivation and accountability
