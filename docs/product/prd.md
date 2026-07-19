@@ -220,3 +220,147 @@ Transition from a non-software background into software engineering.
 - Realistic timeline
 - Portfolio-building guidance
 - Motivation and accountability
+
+---
+
+## user research & assumptions
+
+---
+
+## User Stories
+
+SE-OS is designed around user-centered workflows. The following user stories capture the primary interactions expected from users of the platform.
+
+### Goal Management
+
+**US-001**
+
+**As a** new user,
+
+**I want to** define my career goal,
+
+**So that** I receive a personalized learning roadmap.
+
+---
+
+**US-002**
+
+**As a** user,
+
+**I want to** update my career goal,
+
+**So that** my roadmap reflects my latest objectives.
+
+---
+
+### Roadmap Planning
+
+**US-003**
+
+**As a** learner,
+
+**I want to** receive a personalized roadmap,
+
+**So that** I know what skills to learn and in what order.
+
+---
+
+**US-004**
+
+**As a** learner,
+
+**I want to** see milestones,
+
+**So that** I can measure long-term progress.
+
+---
+
+### Daily Learning
+
+**US-005**
+
+**As a** learner,
+
+**I want to** receive daily learning tasks,
+
+**So that** I always know what to work on next.
+
+---
+
+**US-006**
+
+**As a** learner,
+
+**I want to** mark tasks as completed,
+
+**So that** my progress remains up to date.
+
+---
+
+### AI Guidance
+
+**US-007**
+
+**As a** learner,
+
+**I want to** ask career-related questions,
+
+**So that** I can receive personalized guidance.
+
+---
+
+**US-008**
+
+**As a** learner,
+
+**I want to** receive project recommendations,
+
+**So that** I can strengthen my portfolio.
+
+---
+
+### Progress Tracking
+
+**US-009**
+
+**As a** learner,
+
+**I want to** view my learning progress,
+
+**So that** I can stay motivated and identify areas for improvement.
+
+---
+
+**US-010**
+
+**As a** learner,
+
+**I want to** receive updated recommendations based on my progress,
+
+**So that** my learning plan remains effective.
+
+---
+
+### Integrations
+
+**US-011**
+
+**As a** user,
+
+**I want to** connect my GitHub account,
+
+**So that** my portfolio activity can be tracked automatically.
+
+---
+
+**US-012**
+
+**As a** user,
+
+**I want to** view all my learning activities in one dashboard,
+
+**So that** I can monitor my overall career progress.
+
+---
+
+
