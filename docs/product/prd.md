@@ -363,4 +363,24 @@ SE-OS is designed around user-centered workflows. The following user stories cap
 
 ---
 
+## Functional Requirements
 
+The following functional requirements define the core capabilities that the SE-OS platform must provide to users.
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| FR-001 | The system shall allow users to register and authenticate using email or OAuth providers. | High |
+| FR-002 | The system shall allow users to create and manage their profile information. | High |
+| FR-003 | The system shall allow users to define one or more career goals. | High |
+| FR-004 | The system shall generate a personalized learning roadmap based on the user's goals, skills, and available study time. | High |
+| FR-005 | The system shall divide each roadmap into milestones and daily learning tasks. | High |
+| FR-006 | The system shall recommend learning resources relevant to each milestone. | High |
+| FR-007 | The system shall allow users to mark tasks as completed, skipped, or postponed. | High |
+| FR-008 | The system shall update the user's progress and dashboard based on completed activities. | High |
+| FR-009 | The system shall provide an AI-powered mentor capable of answering career-related questions. | High |
+| FR-010 | The system shall recommend portfolio projects based on the user's career goal and current skill level. | Medium |
+| FR-011 | The system shall allow users to connect their GitHub account for portfolio tracking. | Medium |
+| FR-012 | The system shall display analytics including learning progress, completed tasks, milestones, and activity history. | Medium |
+| FR-013 | The system shall adapt future recommendations based on user progress and feedback. | High |
+| FR-014 | The system shall notify users about pending tasks and upcoming milestones. | Low |
+| FR-015 | The system shall maintain a history of AI interactions for future reference. | Medium |
