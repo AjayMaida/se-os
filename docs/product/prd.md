@@ -601,3 +601,140 @@ Keeps users informed about upcoming tasks, milestones, and learning reminders.
 **Acceptance Criteria**
 
 - Notifications delivered according to user settings.
+
+---
+
+## AI System Requirements
+
+The AI subsystem is the core intelligence layer of SE-OS. It is responsible for transforming user goals into structured learning plans, providing contextual recommendations, and adapting guidance based on user progress.
+
+### AI Responsibilities
+
+The AI system shall:
+
+- Analyze user profiles and career goals.
+- Identify skill gaps.
+- Generate personalized learning roadmaps.
+- Create daily learning plans.
+- Recommend learning resources.
+- Suggest portfolio projects.
+- Answer career-related questions.
+- Adapt recommendations based on user progress.
+- Maintain conversational context.
+
+### AI Inputs
+
+The AI system uses:
+
+- User profile
+- Current skills
+- Target career
+- Available study time
+- Learning history
+- Completed tasks
+- GitHub activity
+- User feedback
+
+### AI Outputs
+
+The AI produces:
+
+- Personalized roadmaps
+- Daily tasks
+- Milestones
+- Resource recommendations
+- Project suggestions
+- Career guidance
+- Progress insights
+
+### Future AI Agent Architecture
+
+The platform is designed to evolve into a multi-agent AI system consisting of:
+
+- Planner Agent
+- Coach Agent
+- Resource Agent
+- Project Advisor Agent
+- Progress Analyst Agent
+- Interview Preparation Agent
+
+---
+
+## External Integrations
+
+The MVP integrates with selected third-party services.
+
+| Service | Purpose |
+|----------|---------|
+| GitHub | Portfolio tracking |
+| Google OAuth | Authentication |
+| OpenAI-compatible LLM | AI reasoning |
+| PostgreSQL | Persistent data storage |
+| Redis | Caching and background jobs |
+
+Future integrations may include:
+
+- LeetCode
+- Google Calendar
+- LinkedIn
+- Notion
+- Slack
+- Discord
+
+---
+
+## Security & Privacy
+
+The platform shall follow industry-standard security practices.
+
+### Authentication
+
+- OAuth 2.0
+- JWT-based authentication
+- Secure password hashing
+
+### Data Protection
+
+- HTTPS encryption
+- Encrypted sensitive data
+- Secure session management
+
+### Privacy
+
+- Users control their personal data.
+- Users may disconnect third-party integrations.
+- AI conversations are stored securely.
+- Data collection is limited to features required by the platform.
+
+---
+
+## Technical Constraints
+
+The MVP will use the following technology stack.
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- FastAPI
+- Python
+- PostgreSQL
+- Redis
+
+### AI
+
+- LangGraph
+- LangChain
+- OpenAI-compatible LLM
+
+### Infrastructure
+
+- Docker
+- GitHub Actions
+
+Future infrastructure may include Kubernetes, message queues, vector databases, and cloud-native deployment.
