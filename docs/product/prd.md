@@ -408,3 +408,196 @@ The following non-functional requirements define the quality attributes, operati
 | NFR-013 | The application shall support automated testing and continuous integration workflows. | Mandatory |
 | NFR-014 | The platform shall be containerized to enable consistent deployment across environments. | Docker |
 | NFR-015 | The system shall be designed to support future AI agents and additional third-party integrations without major architectural changes. | Extensible |
+
+---
+
+## Feature Specifications
+
+This section describes the core features included in the MVP, their purpose, expected behavior, and business value.
+
+---
+
+### Feature 1: Goal Management
+
+**Description**
+
+Allows users to define, update, and manage their career goals. The selected goal serves as the foundation for personalized roadmap generation.
+
+**Capabilities**
+
+- Create career goals
+- Update career goals
+- Set target completion timeline
+- Specify daily learning availability
+- Define current skill level
+
+**Business Rules**
+
+- A user may have multiple goals.
+- Only one goal can be active at a time.
+- Changing the active goal triggers roadmap regeneration.
+
+**Acceptance Criteria**
+
+- Users can create, edit, archive, and activate goals.
+- Goal changes are reflected in the roadmap.
+
+---
+
+### Feature 2: AI Roadmap Generation
+
+**Description**
+
+Generates a personalized learning roadmap based on user goals, current skills, available study time, and progress.
+
+**Capabilities**
+
+- Skill gap analysis
+- Learning roadmap generation
+- Milestone creation
+- Timeline estimation
+
+**Business Rules**
+
+- Roadmaps must adapt when user progress changes.
+- Roadmaps should prioritize prerequisite skills.
+
+**Acceptance Criteria**
+
+- Personalized roadmap generated successfully.
+- Milestones displayed in logical order.
+
+---
+
+### Feature 3: Daily Planner
+
+**Description**
+
+Breaks roadmap milestones into actionable daily learning tasks.
+
+**Capabilities**
+
+- Daily task generation
+- Task prioritization
+- Estimated completion time
+- Task completion tracking
+
+**Business Rules**
+
+- Tasks should fit within the user's available study time.
+- Missed tasks should be rescheduled intelligently.
+
+**Acceptance Criteria**
+
+- Daily tasks generated automatically.
+- Users can complete, skip, or postpone tasks.
+
+---
+
+### Feature 4: AI Mentor
+
+**Description**
+
+Provides personalized career guidance using AI.
+
+**Capabilities**
+
+- Answer technical questions
+- Explain concepts
+- Recommend projects
+- Resume guidance
+- Interview preparation
+
+**Business Rules**
+
+- Responses should consider the user's active goal.
+- Recommendations should align with the roadmap.
+
+**Acceptance Criteria**
+
+- AI provides contextual and relevant responses.
+- Conversation history is preserved.
+
+---
+
+### Feature 5: Progress Dashboard
+
+**Description**
+
+Provides visibility into learning progress and overall performance.
+
+**Capabilities**
+
+- Progress visualization
+- Milestone tracking
+- Learning streaks
+- Weekly summaries
+- Activity history
+
+**Acceptance Criteria**
+
+- Dashboard updates after task completion.
+- Progress metrics accurately reflect user activity.
+
+---
+
+### Feature 6: Learning Resource Recommendations
+
+**Description**
+
+Recommends high-quality learning resources based on roadmap milestones.
+
+**Capabilities**
+
+- Documentation recommendations
+- Video tutorials
+- Courses
+- Practice problems
+- Books
+
+**Business Rules**
+
+- Resources should match user skill level.
+- Duplicate recommendations should be minimized.
+
+---
+
+### Feature 7: GitHub Portfolio Tracking
+
+**Description**
+
+Tracks GitHub activity to measure portfolio growth.
+
+**Capabilities**
+
+- Repository tracking
+- Commit history
+- Contribution analysis
+- Portfolio insights
+
+**Acceptance Criteria**
+
+- GitHub account successfully linked.
+- Activity reflected in dashboard.
+
+---
+
+### Feature 8: Notifications
+
+**Description**
+
+Keeps users informed about upcoming tasks, milestones, and learning reminders.
+
+**Capabilities**
+
+- Daily reminders
+- Milestone notifications
+- Goal completion alerts
+
+**Business Rules**
+
+- Users can configure notification preferences.
+
+**Acceptance Criteria**
+
+- Notifications delivered according to user settings.
