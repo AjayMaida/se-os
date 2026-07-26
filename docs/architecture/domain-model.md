@@ -349,7 +349,136 @@ Each business capability within SE-OS has a single owning domain. While other do
 
 # Domain Events
 
-> To be defined in the next architecture review.
+Domain events capture significant business changes within a domain. They allow other domains to react to those changes without creating tight coupling.
+
+## Identity & User
+
+### Publishes
+
+- UserRegistered
+- UserProfileUpdated
+- UserPreferencesUpdated
+- SubscriptionChanged
+
+### Consumed By
+
+- Learning Management
+- Roadmap & Planning
+- Practice
+- Projects
+- Career Development
+- Guidance & Recommendations
+
+---
+
+## Learning Management
+
+### Publishes
+
+- SkillAssessmentCompleted
+- LearningProgressUpdated
+- CompetencyAchieved
+- LearningResourceCompleted
+
+### Consumed By
+
+- Roadmap & Planning
+- Career Development
+- Guidance & Recommendations
+
+---
+
+## Roadmap & Planning
+
+### Publishes
+
+- RoadmapCreated
+- RoadmapUpdated
+- MilestoneCompleted
+- DailyPlanGenerated
+- WeeklyPlanGenerated
+
+### Consumed By
+
+- Practice
+- Projects
+- Guidance & Recommendations
+
+---
+
+## Practice
+
+### Publishes
+
+- PracticeSessionCompleted
+- CodingChallengeSolved
+- ContestCompleted
+- PracticeStatisticsUpdated
+
+### Consumed By
+
+- Career Development
+- Guidance & Recommendations
+
+---
+
+## Projects
+
+### Publishes
+
+- ProjectStarted
+- ProjectCompleted
+- GitHubPortfolioUpdated
+- PortfolioProjectPublished
+
+### Consumed By
+
+- Career Development
+- Guidance & Recommendations
+
+---
+
+## Career Development
+
+### Publishes
+
+- ResumeUpdated
+- InterviewCompleted
+- JobApplicationSubmitted
+- CompanyStatusUpdated
+
+### Consumed By
+
+- Guidance & Recommendations
+
+---
+
+## Guidance & Recommendations
+
+### Publishes
+
+- RecommendationGenerated
+- PersonalizedPlanSuggested
+- FeedbackGenerated
+- NextBestActionGenerated
+
+### Consumed By
+
+- User Interface
+- Notification Service
+
+---
+
+## Event Principles
+
+The following principles govern event-driven communication within SE-OS:
+
+- Events represent business facts that have already occurred.
+- Events are immutable and must never be modified after publication.
+- Domains publish events only for changes they own.
+- Consumers react to events asynchronously whenever possible.
+- Event publication should not require knowledge of event consumers.
+- Domains remain functional even if an event consumer is temporarily unavailable.
 
 ---
 
