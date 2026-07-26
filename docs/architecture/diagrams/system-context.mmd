@@ -1,0 +1,61 @@
+flowchart LR
+
+%% ===========================================
+%% Actors
+%% ===========================================
+
+User([User])
+Admin([Administrator])
+
+%% ===========================================
+%% SE-OS Boundary
+%% ===========================================
+
+subgraph SEOS["SE-OS Platform"]
+
+Web[Web Application]
+Mobile[Mobile Application<br/>(Future)]
+
+end
+
+%% ===========================================
+%% External Platforms
+%% ===========================================
+
+GitHub[GitHub]
+
+LeetCode[LeetCode]
+
+GeeksforGeeks[GeeksforGeeks]
+
+HackerRank[HackerRank]
+
+LinkedIn[LinkedIn]
+
+LLM[AI Model Providers]
+
+%% ===========================================
+%% User Interactions
+%% ===========================================
+
+User --> Web
+
+User -. Future .-> Mobile
+
+Admin --> Web
+
+%% ===========================================
+%% Platform Integrations
+%% ===========================================
+
+Web --> GitHub
+
+Web --> LeetCode
+
+Web --> GeeksforGeeks
+
+Web --> HackerRank
+
+Web --> LinkedIn
+
+Web --> LLM
