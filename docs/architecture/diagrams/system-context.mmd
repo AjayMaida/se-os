@@ -1,61 +1,58 @@
 flowchart LR
 
-%% ===========================================
+%% =====================================================
 %% Actors
-%% ===========================================
+%% =====================================================
 
-User([User])
-Admin([Administrator])
+User([👤 User])
+Admin([🛠️ Administrator])
 
-%% ===========================================
-%% SE-OS Boundary
-%% ===========================================
+%% =====================================================
+%% SE-OS System Boundary
+%% =====================================================
 
 subgraph SEOS["SE-OS Platform"]
 
-Web[Web Application]
-Mobile[Mobile Application<br/>(Future)]
+Portal["Web Application"]
+
+FutureMobile["Mobile Application
+(Future)"]
 
 end
 
-%% ===========================================
-%% External Platforms
-%% ===========================================
+%% =====================================================
+%% External Systems
+%% =====================================================
 
-GitHub[GitHub]
+GitHub["GitHub"]
 
-LeetCode[LeetCode]
+LeetCode["LeetCode"]
 
-GeeksforGeeks[GeeksforGeeks]
+GFG["GeeksforGeeks"]
 
-HackerRank[HackerRank]
+HackerRank["HackerRank"]
 
-LinkedIn[LinkedIn]
+LinkedIn["LinkedIn"]
 
-LLM[AI Model Providers]
+AI["AI Model Providers
+(OpenAI / Anthropic / Google / Local LLMs)"]
 
-%% ===========================================
-%% User Interactions
-%% ===========================================
+%% =====================================================
+%% User Interaction
+%% =====================================================
 
-User --> Web
+User --> Portal
+User -. Future .-> FutureMobile
 
-User -. Future .-> Mobile
+Admin --> Portal
 
-Admin --> Web
+%% =====================================================
+%% External Integrations
+%% =====================================================
 
-%% ===========================================
-%% Platform Integrations
-%% ===========================================
-
-Web --> GitHub
-
-Web --> LeetCode
-
-Web --> GeeksforGeeks
-
-Web --> HackerRank
-
-Web --> LinkedIn
-
-Web --> LLM
+Portal --> GitHub
+Portal --> LeetCode
+Portal --> GFG
+Portal --> HackerRank
+Portal --> LinkedIn
+Portal --> AI
