@@ -298,7 +298,52 @@ The following principles govern collaboration between business domains:
 
 # Domain Ownership
 
-> To be defined in the next architecture review.
+Each business capability within SE-OS has a single owning domain. While other domains may consume or reference the information, ownership always remains with one domain to ensure consistency, maintainability, and clear responsibility.
+
+| Business Capability | Owning Domain |
+|---------------------|---------------|
+| User Account | Identity & User |
+| Authentication & Authorization | Identity & User |
+| User Profile | Identity & User |
+| User Preferences | Identity & User |
+| Subscription | Identity & User |
+| Skill Assessment | Learning Management |
+| Competencies | Learning Management |
+| Learning Resources | Learning Management |
+| Learning History | Learning Management |
+| Learning Progress | Learning Management |
+| Career Goals | Roadmap & Planning |
+| Learning Roadmaps | Roadmap & Planning |
+| Daily Plans | Roadmap & Planning |
+| Weekly Plans | Roadmap & Planning |
+| Milestones | Roadmap & Planning |
+| Coding Challenges | Practice |
+| Practice Sessions | Practice |
+| Contest History | Practice |
+| Coding Statistics | Practice |
+| Coding Streaks | Practice |
+| Portfolio Projects | Projects |
+| Project Recommendations | Projects |
+| Project Progress | Projects |
+| GitHub Portfolio | Projects |
+| Resume | Career Development |
+| Cover Letter | Career Development |
+| Interview Preparation | Career Development |
+| Job Applications | Career Development |
+| Company Tracking | Career Development |
+| Personalized Recommendations | Guidance & Recommendations |
+| Career Guidance | Guidance & Recommendations |
+| Learning Suggestions | Guidance & Recommendations |
+| Feedback | Guidance & Recommendations |
+| Next Best Actions | Guidance & Recommendations |
+
+## Ownership Principles
+
+- Every business capability has exactly one owning domain.
+- Domains are the only authority allowed to modify the data they own.
+- Other domains must consume owned data through APIs, domain events, or published interfaces.
+- Shared database access across domains is prohibited.
+- Ownership boundaries should remain stable even if the implementation evolves from a modular monolith to microservices.
 
 ---
 
