@@ -1,0 +1,75 @@
+flowchart TB
+
+%% =====================================================
+%% SOURCES
+%% =====================================================
+
+Conversation["Conversation"]
+
+Core["Core Platform"]
+
+Knowledge["Knowledge Platform"]
+
+Feedback["User Feedback"]
+
+%% =====================================================
+%% MEMORY PLATFORM
+%% =====================================================
+
+subgraph MemoryPlatform["Memory Platform"]
+
+Gateway["Memory API"]
+
+Session["Session Memory"]
+
+ConversationMemory["Conversation Memory"]
+
+UserProfile["User Profile Memory"]
+
+Working["Working Memory"]
+
+Semantic["Semantic Memory"]
+
+MemoryManager["Memory Manager"]
+
+MemoryPolicy["Memory Policy Engine"]
+
+end
+
+%% =====================================================
+%% AI KERNEL
+%% =====================================================
+
+Execution["Execution Context"]
+
+Planner["Goal Planner"]
+
+%% =====================================================
+%% FLOW
+%% =====================================================
+
+Conversation --> Gateway
+
+Core --> Gateway
+
+Knowledge --> Gateway
+
+Feedback --> Gateway
+
+Gateway --> MemoryManager
+
+MemoryManager --> Session
+
+MemoryManager --> ConversationMemory
+
+MemoryManager --> UserProfile
+
+MemoryManager --> Working
+
+MemoryManager --> Semantic
+
+MemoryManager --> MemoryPolicy
+
+Execution --> Gateway
+
+Planner --> Gateway

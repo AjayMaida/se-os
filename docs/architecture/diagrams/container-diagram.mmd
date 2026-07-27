@@ -1,0 +1,115 @@
+flowchart TB
+
+%% =====================================================
+%% ACTORS
+%% =====================================================
+
+User([👤 User])
+
+%% =====================================================
+%% FRONTEND
+%% =====================================================
+
+Web["Web Application
+React + Next.js"]
+
+%% =====================================================
+%% GATEWAY
+%% =====================================================
+
+Gateway["API Gateway"]
+
+%% =====================================================
+%% PLATFORM
+%% =====================================================
+
+subgraph Platform["SE-OS Platform"]
+
+Core["Core Platform
+(Modular Monolith)"]
+
+AI["AI Platform"]
+
+Integration["Integration Platform"]
+
+Notification["Notification Platform"]
+
+Postgres[(PostgreSQL)]
+
+Redis[(Redis Cache)]
+
+Broker["Message Broker"]
+
+end
+
+%% =====================================================
+%% EXTERNAL SERVICES
+%% =====================================================
+
+GitHub["GitHub"]
+
+LeetCode["LeetCode"]
+
+GFG["GeeksforGeeks"]
+
+HackerRank["HackerRank"]
+
+LinkedIn["LinkedIn"]
+
+LLM["AI Model Providers"]
+
+%% =====================================================
+%% USER FLOW
+%% =====================================================
+
+User --> Web
+
+Web --> Gateway
+
+Gateway --> Core
+
+Gateway --> AI
+
+Gateway --> Integration
+
+%% =====================================================
+%% DATABASE
+%% =====================================================
+
+Core --> Postgres
+
+Core --> Redis
+
+%% =====================================================
+%% AI
+%% =====================================================
+
+AI --> LLM
+
+Core --> AI
+
+%% =====================================================
+%% INTEGRATIONS
+%% =====================================================
+
+Integration --> GitHub
+
+Integration --> LeetCode
+
+Integration --> GFG
+
+Integration --> HackerRank
+
+Integration --> LinkedIn
+
+Core --> Integration
+
+%% =====================================================
+%% EVENTS
+%% =====================================================
+
+Core --> Broker
+
+Broker --> Notification
+
+Broker --> AI

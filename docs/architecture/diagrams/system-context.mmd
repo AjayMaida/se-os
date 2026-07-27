@@ -1,0 +1,58 @@
+flowchart LR
+
+%% =====================================================
+%% Actors
+%% =====================================================
+
+User([👤 User])
+Admin([🛠️ Administrator])
+
+%% =====================================================
+%% SE-OS System Boundary
+%% =====================================================
+
+subgraph SEOS["SE-OS Platform"]
+
+Portal["Web Application"]
+
+FutureMobile["Mobile Application
+(Future)"]
+
+end
+
+%% =====================================================
+%% External Systems
+%% =====================================================
+
+GitHub["GitHub"]
+
+LeetCode["LeetCode"]
+
+GFG["GeeksforGeeks"]
+
+HackerRank["HackerRank"]
+
+LinkedIn["LinkedIn"]
+
+AI["AI Model Providers
+(OpenAI / Anthropic / Google / Local LLMs)"]
+
+%% =====================================================
+%% User Interaction
+%% =====================================================
+
+User --> Portal
+User -. Future .-> FutureMobile
+
+Admin --> Portal
+
+%% =====================================================
+%% External Integrations
+%% =====================================================
+
+Portal --> GitHub
+Portal --> LeetCode
+Portal --> GFG
+Portal --> HackerRank
+Portal --> LinkedIn
+Portal --> AI

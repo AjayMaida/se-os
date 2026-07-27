@@ -1,0 +1,201 @@
+flowchart TB
+
+%% =====================================================
+%% CORE PLATFORM
+%% =====================================================
+
+Core["Core Platform"]
+
+%% =====================================================
+%% AI PLATFORM
+%% =====================================================
+
+subgraph AIPlatform["AI Platform"]
+
+CapabilityAPI["AI Capability API"]
+
+Resolver["Capability Resolver"]
+
+subgraph Kernel["AI Kernel"]
+
+%% ------------------------
+%% Planning
+%% ------------------------
+
+subgraph Planning["Planning Platform"]
+
+GoalPlanner["Goal Planner"]
+
+TaskPlanner["Task Planner"]
+
+end
+
+%% ------------------------
+%% Workflow
+%% ------------------------
+
+subgraph Workflow["Workflow Platform"]
+
+WorkflowManager["Workflow Manager"]
+
+StateStore["Workflow State Store"]
+
+Scheduler["Workflow Scheduler"]
+
+end
+
+%% ------------------------
+%% Execution
+%% ------------------------
+
+subgraph Execution["Execution Platform"]
+
+Orchestrator["Agent Orchestrator"]
+
+Runtime["Agent Runtime"]
+
+ExecutionContext["Execution Context"]
+
+end
+
+%% ------------------------
+%% Infrastructure
+%% ------------------------
+
+subgraph Infrastructure["Infrastructure Platform"]
+
+Memory["Memory Platform"]
+
+Knowledge["Knowledge Platform"]
+
+Tools["Tool Registry"]
+
+Prompts["Prompt Manager"]
+
+Router["Model Router"]
+
+end
+
+%% ------------------------
+%% Quality
+%% ------------------------
+
+subgraph Quality["Quality Platform"]
+
+Safety["AI Safety"]
+
+Validation["Response Validation"]
+
+Evaluation["Evaluation Platform"]
+
+end
+
+%% ------------------------
+%% Operations
+%% ------------------------
+
+subgraph Operations["Operations Platform"]
+
+Observability["Observability"]
+
+Feedback["Human Feedback"]
+
+end
+
+end
+
+subgraph Capabilities["AI Capability Modules"]
+
+Career["Career"]
+
+Learning["Learning"]
+
+Practice["Practice"]
+
+Projects["Projects"]
+
+Interview["Interview"]
+
+Roadmap["Roadmap"]
+
+end
+
+end
+
+%% =====================================================
+%% EXTERNAL SYSTEMS
+%% =====================================================
+
+LLM["LLM Providers"]
+
+MCP["MCP Servers"]
+
+REST["REST APIs"]
+
+Vector["Vector Database"]
+
+%% =====================================================
+%% FLOW
+%% =====================================================
+
+Core --> CapabilityAPI
+
+CapabilityAPI --> Resolver
+
+Resolver --> GoalPlanner
+
+GoalPlanner --> TaskPlanner
+
+TaskPlanner --> WorkflowManager
+
+WorkflowManager --> Orchestrator
+
+WorkflowManager --> StateStore
+
+WorkflowManager --> Scheduler
+
+Orchestrator --> Runtime
+
+Runtime --> ExecutionContext
+
+ExecutionContext --> Memory
+
+ExecutionContext --> Knowledge
+
+ExecutionContext --> Tools
+
+ExecutionContext --> Prompts
+
+ExecutionContext --> Router
+
+Router --> LLM
+
+Tools --> MCP
+
+Tools --> REST
+
+Knowledge --> Vector
+
+Runtime --> Career
+
+Runtime --> Learning
+
+Runtime --> Practice
+
+Runtime --> Projects
+
+Runtime --> Interview
+
+Runtime --> Roadmap
+
+Runtime --> Safety
+
+Safety --> Validation
+
+Validation --> Evaluation
+
+Evaluation --> Observability
+
+Observability --> Feedback
+
+Feedback --> Core

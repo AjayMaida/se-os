@@ -1,0 +1,135 @@
+flowchart TB
+
+%% =====================================================
+%% ENTRY
+%% =====================================================
+
+Request["AI Capability Request"]
+
+%% =====================================================
+%% AI KERNEL
+%% =====================================================
+
+subgraph Kernel["AI Kernel"]
+
+CapabilityAPI["AI Capability API"]
+
+Resolver["Capability Resolver"]
+
+GoalPlanner["Goal Planner"]
+
+TaskPlanner["Task Planner"]
+
+Workflow["Workflow Engine"]
+
+Orchestrator["Agent Orchestrator"]
+
+Runtime["Agent Runtime"]
+
+ExecutionContext["Execution Context"]
+
+end
+
+%% =====================================================
+%% INFRASTRUCTURE
+%% =====================================================
+
+subgraph Infrastructure["Infrastructure Services"]
+
+Memory["Memory Platform"]
+
+Knowledge["Knowledge Platform"]
+
+Prompt["Prompt Manager"]
+
+Tools["Tool Registry"]
+
+Router["Model Router"]
+
+end
+
+%% =====================================================
+%% QUALITY
+%% =====================================================
+
+subgraph Quality["Quality Services"]
+
+Safety["AI Safety"]
+
+Validator["Response Validator"]
+
+Evaluation["Evaluation Platform"]
+
+end
+
+%% =====================================================
+%% OPERATIONS
+%% =====================================================
+
+subgraph Operations["Operations"]
+
+Observability["Observability"]
+
+Feedback["Human Feedback"]
+
+end
+
+%% =====================================================
+%% EXTERNAL
+%% =====================================================
+
+LLM["LLM Providers"]
+
+Vector["Vector Database"]
+
+MCP["MCP Servers"]
+
+REST["REST APIs"]
+
+%% =====================================================
+%% FLOW
+%% =====================================================
+
+Request --> CapabilityAPI
+
+CapabilityAPI --> Resolver
+
+Resolver --> GoalPlanner
+
+GoalPlanner --> TaskPlanner
+
+TaskPlanner --> Workflow
+
+Workflow --> Orchestrator
+
+Orchestrator --> Runtime
+
+Runtime --> ExecutionContext
+
+ExecutionContext --> Memory
+
+ExecutionContext --> Knowledge
+
+ExecutionContext --> Prompt
+
+ExecutionContext --> Tools
+
+ExecutionContext --> Router
+
+Knowledge --> Vector
+
+Tools --> MCP
+
+Tools --> REST
+
+Router --> LLM
+
+Runtime --> Safety
+
+Safety --> Validator
+
+Validator --> Evaluation
+
+Evaluation --> Observability
+
+Observability --> Feedback

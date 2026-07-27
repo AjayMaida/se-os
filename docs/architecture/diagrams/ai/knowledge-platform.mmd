@@ -1,0 +1,80 @@
+flowchart TB
+
+%% =====================================================
+%% SOURCES
+%% =====================================================
+
+Documents["Documents"]
+
+GitHub["GitHub"]
+
+Learning["Learning Resources"]
+
+UserFiles["User Uploads"]
+
+%% =====================================================
+%% KNOWLEDGE PLATFORM
+%% =====================================================
+
+subgraph Knowledge["Knowledge Platform"]
+
+Ingestion["Document Ingestion"]
+
+Parser["Parser"]
+
+Chunker["Chunking Engine"]
+
+Embedding["Embedding Generator"]
+
+Indexer["Index Service"]
+
+VectorStore["Vector Database"]
+
+Retriever["Retriever"]
+
+Reranker["Re-ranker"]
+
+Citation["Citation Service"]
+
+end
+
+%% =====================================================
+%% AI PLATFORM
+%% =====================================================
+
+Context["Context Builder"]
+
+Prompt["Prompt Manager"]
+
+LLM["LLM Providers"]
+
+%% =====================================================
+%% FLOW
+%% =====================================================
+
+Documents --> Ingestion
+GitHub --> Ingestion
+Learning --> Ingestion
+UserFiles --> Ingestion
+
+Ingestion --> Parser
+
+Parser --> Chunker
+
+Chunker --> Embedding
+
+Embedding --> Indexer
+
+Indexer --> VectorStore
+
+Context --> Retriever
+
+Retriever --> VectorStore
+
+Retriever --> Reranker
+
+Reranker --> Citation
+
+Citation --> Prompt
+
+Prompt --> LLM
