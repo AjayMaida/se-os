@@ -1,0 +1,74 @@
+flowchart TB
+
+    User["👤 User"]
+
+    subgraph Frontend["Frontend"]
+        Web["Web Application"]
+    end
+
+    subgraph Backend["Backend (Modular Monolith)"]
+
+        API["REST API"]
+
+        subgraph Domains["Business Domains"]
+            UserDomain["User Management"]
+            GoalDomain["Goal Management"]
+            LearningDomain["Learning Engine"]
+            CareerDomain["Career Engine"]
+            ProjectDomain["Project Engine"]
+        end
+
+        subgraph AIPlatform["AI Platform"]
+            Planner["Planner"]
+            Context["Context Builder"]
+            Memory["Memory"]
+            Knowledge["Knowledge Platform"]
+            Router["Model Router"]
+            Tools["Tool Registry"]
+        end
+    end
+
+    subgraph Data["Data Layer"]
+        PostgreSQL["PostgreSQL"]
+        VectorDB["Vector Database (Future)"]
+        Redis["Redis (Future)"]
+    end
+
+    subgraph External["External Services"]
+        LLM["LLM Providers"]
+        GitHub["GitHub"]
+        LinkedIn["LinkedIn"]
+        Email["Email Service"]
+    end
+
+    User --> Web
+    Web --> API
+
+    API --> UserDomain
+    API --> GoalDomain
+    API --> LearningDomain
+    API --> CareerDomain
+    API --> ProjectDomain
+
+    UserDomain --> PostgreSQL
+    GoalDomain --> PostgreSQL
+    LearningDomain --> PostgreSQL
+    CareerDomain --> PostgreSQL
+    ProjectDomain --> PostgreSQL
+
+    API --> Planner
+
+    Planner --> Context
+    Planner --> Memory
+    Planner --> Knowledge
+    Planner --> Router
+    Planner --> Tools
+
+    Knowledge --> VectorDB
+    Memory --> Redis
+
+    Router --> LLM
+
+    API --> GitHub
+    API --> LinkedIn
+    API --> Email
