@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import List, Optional
+from typing import List, Optional, Union
+import json
 
 class Settings(BaseSettings):
     # App
@@ -10,7 +11,20 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    CORS_ORIGINS: Union[str, List[str]] = "http://localhost:3000"
+    
+    @property
+    def cors_origins_list(self) -> List[str]:
+        if isinstance(self.CORS_ORIGINS, list):
+            return self.CORS_ORIGINS
+        if isinstance(self.CORS_ORIGINS, str):
+            if self.CORS_ORIGINS.startswith("["):
+                try:
+                    return json.loads(self.CORS_ORIGINS)
+                except Exception:
+                    pass
+            return [i.strip() for i in self.CORS_ORIGINS.split(",") if i.strip()]
+        return ["http://localhost:3000"]
     
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/se_os"

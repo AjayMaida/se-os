@@ -16,7 +16,7 @@ from app.domains.career.router import router as career_router
 
 logger = structlog.get_logger()
 
-if settings.SENTRY_DSN:
+if settings.SENTRY_DSN and settings.SENTRY_DSN.startswith("http"):
     sentry_sdk.init(
         dsn=settings.SENTRY_DSN,
         environment=settings.ENVIRONMENT,
@@ -33,7 +33,7 @@ app = FastAPI(title=settings.APP_NAME, version=settings.VERSION, lifespan=lifesp
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

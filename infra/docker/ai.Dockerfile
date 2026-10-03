@@ -4,27 +4,29 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install --no-cache-dir uv
+
+WORKDIR /app
+ENV UV_PROJECT_ENVIRONMENT="/opt/venv"
+ENV PATH="/opt/venv/bin:$PATH"
+
 # Stage 'development'
 FROM base AS development
-RUN pip install uv
-WORKDIR /app
 COPY pyproject.toml .
-RUN uv sync
+RUN uv sync --no-install-project
 COPY . .
 EXPOSE 8001
-CMD ["uvicorn", "services.ai.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
 
 # Stage 'production'
 FROM base AS production
-RUN pip install uv
-WORKDIR /app
 COPY pyproject.toml .
-RUN uv sync --no-dev
+RUN uv sync --no-dev --no-install-project
 COPY . .
 # Create non-root user
-RUN useradd -m appuser && chown -R appuser:appuser /app
+RUN useradd -m appuser && chown -R appuser:appuser /app /opt/venv
 USER appuser
 EXPOSE 8001
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
   CMD curl -f http://localhost:8001/health || exit 1
-CMD ["gunicorn", "services.ai.main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8001"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "4"]

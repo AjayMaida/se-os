@@ -41,6 +41,7 @@ services:
   # Backend API — FastAPI (Core Platform)
   # ───────────────────────────────────────
   api:
+    image: se-os-api:latest
     build:
       context: ./apps/api
       dockerfile: ../../infra/docker/api.Dockerfile
@@ -137,11 +138,12 @@ services:
   # Celery Worker (Background Jobs)
   # ───────────────────────────────────────
   worker:
+    image: se-os-api:latest
     build:
       context: ./apps/api
       dockerfile: ../../infra/docker/api.Dockerfile
       target: development
-    command: celery -A app.workers.celery_app worker --loglevel=info --concurrency=4
+    command: /opt/venv/bin/celery -A app.workers.celery_app worker --loglevel=info --concurrency=4
     volumes:
       - ./apps/api:/app
     environment:
@@ -166,11 +168,12 @@ services:
   # Celery Beat (Scheduled Tasks)
   # ───────────────────────────────────────
   scheduler:
+    image: se-os-api:latest
     build:
       context: ./apps/api
       dockerfile: ../../infra/docker/api.Dockerfile
       target: development
-    command: celery -A app.workers.celery_app beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    command: /opt/venv/bin/celery -A app.workers.celery_app beat --loglevel=info
     volumes:
       - ./apps/api:/app
     environment:
@@ -279,6 +282,8 @@ services:
   # ───────────────────────────────────────
   minio:
     image: minio/minio:latest
+    profiles:
+      - storage
     ports:
       - "9000:9000"
       - "9001:9001"   # MinIO Console
@@ -302,6 +307,8 @@ services:
   # ───────────────────────────────────────
   piston:
     image: ghcr.io/engineer-man/piston:latest
+    profiles:
+      - execution
     ports:
       - "2000:2000"
     privileged: true
