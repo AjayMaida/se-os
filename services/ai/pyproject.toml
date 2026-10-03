@@ -1,0 +1,20 @@
+[project]
+name = "se-os-ai-platform"
+version = "0.1.0"
+description = "AI Platform for SE-OS"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115",
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-openai>=0.2",
+    "litellm>=1.50",
+    "pydantic-settings>=2.5",
+    "redis[hiredis]>=5.2",
+    "asyncpg>=0.30",
+    "sqlalchemy[asyncio]>=2.0",
+    "httpx>=0.28",
+    "structlog>=24.4",
+    "openai>=1.50",
+    "aio-pika>=9.4"
+]
