@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [ build, develop, main ]
+  pull_request:
+    branches: [ build, develop, main ]
+
+jobs:
+  lint-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Sync dependencies
+        run: uv sync
+      - name: Run Ruff check
+        run: uv run ruff check .
+      - name: Run Ruff format check
+        run: uv run ruff format --check .
+  
+  test-backend:
+    runs-on: ubuntu-latest  
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: seos_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Sync dependencies
+        run: uv sync
+      - name: Run migrations
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/seos_test
+        run: uv run alembic upgrade head
+      - name: Run pytest
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/seos_test
+          REDIS_URL: redis://localhost:6379/0
+        run: uv run pytest --cov
+  
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Next lint
+        run: npx next lint
+      - name: Run TypeScript check
+        run: npx tsc --noEmit
+  
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build API image
+        run: docker buildx build --file infra/docker/api.Dockerfile --target production -t seos-api:latest --load .
+      - name: Build Web image
+        run: docker buildx build --file infra/docker/web.Dockerfile --target production -t seos-web:latest --load .
+      - name: Build AI image
+        run: docker buildx build --file infra/docker/ai.Dockerfile --target production -t seos-ai:latest --load .
+      - name: Build Notifications image
+        run: docker buildx build --file infra/docker/notifications.Dockerfile -t seos-notifications:latest --load .

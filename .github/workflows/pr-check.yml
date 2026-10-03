@@ -1,0 +1,28 @@
+name: PR Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PR title (Conventional Commits)
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check PR description
+        run: |
+          if [ -z "${{ github.event.pull_request.body }}" ]; then
+            echo "PR description cannot be empty"
+            exit 1
+          fi
+      - name: Check Branch name
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          if [[ ! $BRANCH_NAME =~ ^(feature|bugfix|hotfix|release|chore|feat|fix)/.+$ ]]; then
+            echo "Branch name $BRANCH_NAME must follow pattern (feat|fix|feature|bugfix|hotfix|release|chore)/*"
+            exit 1
+          fi
