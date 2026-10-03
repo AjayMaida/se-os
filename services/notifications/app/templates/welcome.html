@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to SE-OS</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #f8fafc;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .header {
+      padding: 32px 32px 20px 32px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+    .badge {
+      display: inline-block;
+      background-color: #6366f1;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    .title {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .content {
+      padding: 32px;
+    }
+    .paragraph {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin: 0 0 20px 0;
+    }
+    .feature-card {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .feature-title {
+      color: #818cf8;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+    }
+    .feature-desc {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .btn-container {
+      text-align: center;
+      margin: 32px 0 16px 0;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #6366f1;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 8px;
+    }
+    .footer {
+      padding: 24px 32px;
+      text-align: center;
+      border-top: 1px solid #334155;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">CAREER OPERATING SYSTEM</div>
+      <h1 class="title">Welcome to SE-OS</h1>
+    </div>
+    <div class="content">
+      <p class="paragraph">Hello {{ name | default('Engineer') }},</p>
+      <p class="paragraph">
+        Welcome to <strong>SE-OS</strong> — your personal AI-powered career operating system designed to guide, accelerate, and elevate your software engineering journey.
+      </p>
+      
+      <div class="feature-card">
+        <h3 class="feature-title">🎯 AI Career Roadmap</h3>
+        <p class="feature-desc">Dynamic personalized milestones mapped to your target roles, companies, and skill levels.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3 class="feature-title">⚡ Daily Action Planner</h3>
+        <p class="feature-desc">Tailored, bite-sized tasks every morning to maintain high momentum and build real engineering mastery.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3 class="feature-title">🎙️ AI Interview Studio</h3>
+        <p class="feature-desc">Practice technical, system design, and behavioral questions with instant multi-modal AI feedback.</p>
+      </div>
+
+      <div class="btn-container">
+        <a href="{{ dashboard_url | default('http://localhost:3000/dashboard') }}" class="btn">Launch Your Dashboard</a>
+      </div>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">© SE-OS • The Operating System for Software Engineers</p>
+    </div>
+  </div>
+</body>
+</html>

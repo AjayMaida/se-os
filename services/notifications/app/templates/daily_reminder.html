@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Daily Plan is Ready</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #f8fafc;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .header {
+      padding: 32px 32px 20px 32px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+    .badge {
+      display: inline-block;
+      background-color: #6366f1;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    .title {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .content {
+      padding: 32px;
+    }
+    .paragraph {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin: 0 0 20px 0;
+    }
+    .streak-banner {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+      border: 1px solid #6366f1;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .streak-text {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .tasks-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+    }
+    .task-item {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .task-bullet {
+      color: #6366f1;
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 12px;
+    }
+    .task-title {
+      color: #f1f5f9;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .btn-container {
+      text-align: center;
+      margin: 32px 0 16px 0;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #6366f1;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 8px;
+    }
+    .footer {
+      padding: 24px 32px;
+      text-align: center;
+      border-top: 1px solid #334155;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">DAILY ACTION PLAN</div>
+      <h1 class="title">Your Plan for Today is Ready</h1>
+    </div>
+    <div class="content">
+      <p class="paragraph">Good morning {{ name | default('there') }},</p>
+      
+      {% if streak_count is defined and streak_count > 0 %}
+      <div class="streak-banner">
+        <p class="streak-text">🔥 {{ streak_count }}-Day Streak Active — Keep the momentum going!</p>
+      </div>
+      {% endif %}
+
+      <p class="paragraph">
+        Here are the focused tasks generated for your roadmap today ({{ date | default('Today') }}):
+      </p>
+
+      {% if tasks %}
+      <ul class="tasks-list">
+        {% for task in tasks %}
+        <li class="task-item">
+          <span class="task-bullet">✓</span>
+          <span class="task-title">{{ task }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="paragraph" style="color: #94a3b8; font-style: italic;">
+        Your custom tasks are queued and ready on your dashboard.
+      </p>
+      {% endif %}
+
+      <div class="btn-container">
+        <a href="{{ plan_url | default('http://localhost:3000/dashboard/daily') }}" class="btn">Start Today's Session</a>
+      </div>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">© SE-OS • Consistency compounds into mastery</p>
+    </div>
+  </div>
+</body>
+</html>
