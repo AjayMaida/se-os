@@ -1,0 +1,18 @@
+flowchart TD
+    Client[Web Client Next.js] -->|HTTP / WS| Gateway[API Gateway Nginx]
+    Gateway -->|REST /auth, /roadmap| API[Core Platform FastAPI]
+    Gateway -->|REST /ai/v1| AI[AI Platform FastAPI]
+    
+    API -->|Domain Events| Broker[(RabbitMQ)]
+    Broker --> Notifications[Notification Worker]
+    Broker --> Celery[Celery Async Workers]
+    
+    AI --> Postgres[(PostgreSQL 16 + pgvector)]
+    API --> Postgres
+    AI --> Redis[(Redis Cache & State)]
+    API --> Redis
+    
+    AI --> LiteLLM[LiteLLM Router]
+    LiteLLM --> OpenAI[OpenAI GPT-4o / mini]
+    LiteLLM --> Anthropic[Anthropic Claude 3.5]
+    LiteLLM --> Piston[Piston Code Sandbox]

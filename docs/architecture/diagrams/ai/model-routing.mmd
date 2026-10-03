@@ -1,0 +1,10 @@
+flowchart TD
+    Req[Incoming AI Request] --> Classifier{Classify Task Tier}
+    Classifier -->|Tier 1: Complex Synthesis| M1[GPT-4o / Claude 3.5 Sonnet]
+    Classifier -->|Tier 2: Routine Planning| M2[GPT-4o-mini]
+    Classifier -->|Tier 3: Offline Batch| M3[OpenAI Batch API]
+    
+    M1 --> Fallback{Failure?}
+    Fallback -->|Yes| Gemini[Gemini 1.5 Pro]
+    Fallback -->|No| Output[Validated JSON Output]
+    Gemini --> Output

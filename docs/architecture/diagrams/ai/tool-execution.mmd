@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User
+    participant Studio as Interview Studio UI
+    participant Agent as Evaluator Agent
+    participant Piston as Piston Sandbox
+    participant LLM as GPT-4o
+    
+    User->>Studio: Submits Solution + Audio
+    Studio->>Agent: Send Code, Audio, Telemetry
+    Agent->>Piston: Run Test Cases
+    Piston-->>Agent: Test Results (Time, Memory, Pass/Fail)
+    Agent->>LLM: Evaluate Code, Architecture & Audio Transcript
+    LLM-->>Agent: Comprehensive Rubric JSON
+    Agent-->>Studio: Complete Assessment Report

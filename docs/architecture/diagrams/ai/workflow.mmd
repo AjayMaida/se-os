@@ -1,0 +1,6 @@
+flowchart TD
+    Start([User Initiates Goal]) --> GapAnalysis[Analyze Skill Gaps]
+    GapAnalysis --> GeneratePhases[Generate Multi-Week Phases]
+    GeneratePhases --> MilestoneDAG[Generate Milestone DAG]
+    MilestoneDAG --> DailyScheduler[Schedule Initial Tasks]
+    DailyScheduler --> End([Ready for Day 1])
