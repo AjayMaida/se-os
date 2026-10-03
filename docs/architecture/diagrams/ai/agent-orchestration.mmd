@@ -1,0 +1,12 @@
+flowchart LR
+    Context[Career Context Builder] --> Router[Model Router]
+    Router --> Supervisor[Agent Supervisor]
+    Supervisor --> RoadmapAgent[Roadmap Synthesis Agent]
+    Supervisor --> PlannerAgent[Daily Planner Agent]
+    Supervisor --> InterviewAgent[Interview Evaluator Agent]
+    Supervisor --> MentorAgent[Interactive Mentor Agent]
+    
+    RoadmapAgent --> Validation[Pydantic Schema Validation]
+    PlannerAgent --> Validation
+    InterviewAgent --> Validation
+    MentorAgent --> Streamer[SSE Token Streamer]

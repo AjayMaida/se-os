@@ -1,0 +1,6 @@
+flowchart TD
+    UserGoal[Career Target & Hours/Day] --> History[Check Past Velocity]
+    History --> CalcRemaining[Calculate Remaining Milestones]
+    CalcRemaining --> SelectTasks[Select 2-4 Concrete Daily Tasks]
+    SelectTasks --> MixBalance{Balance Task Types}
+    MixBalance -->|Practice + Learn + Project| PlanToday[Today's Plan JSON]

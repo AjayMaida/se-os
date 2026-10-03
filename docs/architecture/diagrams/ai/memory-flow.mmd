@@ -1,0 +1,7 @@
+flowchart TD
+    UserInput[User Input / Code / Audio] --> Ingestion[Context Ingestion]
+    Ingestion --> WorkingMemory[LangGraph Thread State]
+    Ingestion --> VectorStore[(pgvector Embeddings)]
+    VectorStore --> RAGSearch[Similarity Retrieval]
+    RAGSearch --> LLMContext[LLM Prompt Context]
+    WorkingMemory --> LLMContext
